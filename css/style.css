@@ -1,0 +1,161 @@
+/*----------
+RESET CSS
+----------*/
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p, a,
+img, strong, ul, li, form, label,
+table, caption, tbody, tfoot, thead,
+tr, th, td, article, aside,
+footer, header, menu, nav {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, footer, header,  menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+
+/*----------
+HEADER
+----------*/
+/*font :  font-family: 'DM Sans', sans-serif; font-family: 'Lato', sans-serif;*/
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    margin: auto;
+}
+header h1 {
+    font-family: 'DM Sans', sans-serif;
+    color: #D04F4F;
+    font-size: 36px;
+}
+header img {
+    margin: 20px 0;
+    width: 50px;
+    height: 45px;
+}
+
+/*----------
+Search section
+----------*/
+.search__container{
+    max-width: 80%;
+    margin: 5em auto;
+}
+.search__container form{
+    display: flex;
+}
+.search__container form button{
+    border: none;
+    background-color:#E7E7E7 ;
+    border-radius: 0 5px 5px 0;
+
+}
+.search__container form button img{
+    width: 50%;
+}
+#searchbar{
+    width: 100%;
+    position: relative;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px  0  0 5px;
+    background-color:#E7E7E7 ;
+    border: 0px solid #E7E7E7;
+    font-family: 'Lato', sans-serif;
+}
+#searchbar:focus {
+    border:0px solid #E7E7E7;
+}
+
+
+/*----------
+Main Section
+----------*/
+#recipes__container{
+    display: flex;
+    flex-wrap:wrap;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2em auto;
+}
+.recipe__card{
+    flex: 1 0 25%;
+    height: 364px;
+    margin: 2em;
+
+
+}
+.recipe__picture{
+    background-color: #C7BEBE;
+    height: 178px;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+.recipe__infos{
+    padding: 20px;
+    background-color: #E7E7E7;
+    height: 186px;
+    border-radius: 0 0 5px 5px;
+
+
+}
+.recipe__infos__header{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.recipe__infos__header span{
+    align-self: flex-start;
+}
+.recipe__infos__header span::before{
+    position: relative;
+    content: url("/assets/clock.svg");
+    margin:0 10px;
+    top: 2px;
+
+
+}
+.recipe__infos__description{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+.recipe__infos__description ul {
+    width: 45%;
+}
+.recipe__infos__description li {
+    margin: 5px 0;
+}
+.recipe__infos__description p {
+    width: 45%;
+    line-height: 1em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
