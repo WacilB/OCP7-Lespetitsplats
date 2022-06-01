@@ -1,10 +1,8 @@
-let recipeArray = []
+
 const recipesContainer = document.getElementById("recipes__container")
 
-
-
-function displayRecipes(){
-    recipesContainer.innerHTML = recipeArray.map(
+function displayRecipes(data){
+    recipesContainer.innerHTML = data.map(
         (recipe)=>{
             let ingredients = []
             recipe.ingredients.map((item) =>

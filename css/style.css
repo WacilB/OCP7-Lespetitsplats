@@ -159,3 +159,8 @@ Main Section
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.ingredient_list{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 25%;
+}

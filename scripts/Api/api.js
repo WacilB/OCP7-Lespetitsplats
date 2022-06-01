@@ -1,3 +1,6 @@
+let recipeArray = []
+
+
 async function fetchJson(){
     await fetch("data/recipes.json")
         .then((res) => res.json())

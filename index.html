@@ -14,15 +14,19 @@
     <h1>Les petits plats</h1>
 </header>
 <section class="search__container">
-    <form action="">
+    <form action="#">
         <input type="text" placeholder="Rechercher une recette" id="searchbar" class="searchbar">
         <button type="submit"><img src="/assets/loupe.png" alt="logo loupe recherche"></button>
     </form>
-
+<div id="search_ingredient__container">
+    <ul class="ingredient_list"></ul>
+</div>
 </section>
 <main id="recipes__container"></main>
 <script src="scripts/Api/api.js"></script>
 <script src="scripts/factory/displayCard.js"></script>
+<script src="scripts/utils/searchBar.js"></script>
+<script src="scripts/factory/filters.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
