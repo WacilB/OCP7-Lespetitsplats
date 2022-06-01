@@ -1,7 +1,7 @@
 let ingredientsArray = []
 let  arrayFilter = []
 const ingredientList = document.querySelector('.ingredient_list')
-
+const searchContainer = document.getElementById("search_ingredient__container")
 
 async function displayIngredientFilter(){
 recipeArray.map(
@@ -33,27 +33,52 @@ recipeArray.map(
      const filtreIngredient = document.querySelectorAll('.filtre_ingredient')
      filtreIngredient.forEach((filtre)=>{
          filtre.addEventListener("click", ()=>{
-
-             recipeArray.map((recipe) =>{
-                 if (recipe.ingredients.includes(filtre.textContent)){
-                     console.log("yes")
-                     arrayFilter.push(recipe)
-                 }
-                 return arrayFilter
-             } )
-             console.log(arrayFilter)
+             addFilter(filtre)
+        let btnFiltre =  document.createElement("span")
+            btnFiltre.classList.add("btnFiltre")
+             btnFiltre.innerText = filtre.textContent
+             searchContainer.appendChild(btnFiltre)
+             eventBtnFilter()
          })
      })
  }
-//  function test(filtre){
-//
-//      for (i=0 ;i<recipeArray.length; i++){
-//         for (j=0 ;j<recipeArray[i].ingredients.length ; j++){
-//             if (recipeArray[i].ingredients[j].ingredient === filtre.textContent){
-//                 arrayFilter.push(recipeArray[i])
-//             }
-//         }
-//      }
-//     displayRecipes(arrayFilter)
-//
-// }
+  function addFilter(filtre){
+
+      for (i=0 ;i<recipeArray.length; i++){
+         for (j=0 ;j<recipeArray[i].ingredients.length ; j++){
+             if (recipeArray[i].ingredients[j].ingredient === filtre.textContent){
+                 arrayFilter.push(recipeArray[i])
+             }
+         }
+      }
+
+     displayRecipes(arrayFilter)
+ }
+
+ function removeFilter(filtre){
+    for (i=0; i< arrayFilter.length; i++){
+        for (j=0 ; j<arrayFilter[i].length ; j++){
+            if (arrayFilter[i].ingredients[j].ingredient === filtre.textContent){
+                arrayFilter.splice(arrayFilter[i],1)
+            }
+        }
+    }
+     console.log(arrayFilter)
+    displayRecipes(arrayFilter)
+ }
+
+ function eventBtnFilter(){
+    const btnFiltres = document.querySelectorAll(".btnFiltre")
+            btnFiltres.forEach((btnFiltre) =>{
+                btnFiltre.addEventListener("click", (e)=>{
+                    console.log(btnFiltre.textContent)
+                    removeFilter(btnFiltre)
+                    btnFiltre.remove()
+                })
+            })
+
+
+
+
+ }
+
