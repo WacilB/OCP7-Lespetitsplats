@@ -159,10 +159,29 @@ Main Section
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.filter__container {
+margin: 1.5em 0 1.5em 0;
+}
 .ingredient_list{
-    display: flex;
+    display: none;
+}
+.toggleIngredient{
+    margin-bottom: 1em;
+}
+.filterIngredient__container{
+    width: 25%;
+    background-color: #3282F7;
+    padding: 5px;
+    border-radius: 5px;
+}
+.ingredient_list__toggle{
+    display: flex!important;
     flex-wrap: wrap;
-    max-width: 25%;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+.ingredient_list li {
+    padding: 15px;
 }
 
 .btnFiltre{
@@ -170,4 +189,5 @@ Main Section
     padding: 0.5em;
     cursor: pointer;
     border-radius: 5px;
+    margin: 1em;
 }

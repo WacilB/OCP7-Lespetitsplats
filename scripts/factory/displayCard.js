@@ -2,6 +2,9 @@
 const recipesContainer = document.getElementById("recipes__container")
 
 function displayRecipes(data){
+    if (data.length == 0){
+        recipesContainer.innerHTML = `<h2>Il n'y a pas de résultat</h2> `
+    }else
     recipesContainer.innerHTML = data.map(
         (recipe)=>{
             let ingredients = []
@@ -22,7 +25,6 @@ function displayRecipes(data){
                   </ul>
                   <p>${recipe.description}</p>
             </div>
-            
             </div>
             
     </div>

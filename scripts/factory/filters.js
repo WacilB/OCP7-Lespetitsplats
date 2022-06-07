@@ -56,8 +56,10 @@ recipeArray.map(
  }
 
  function removeFilter(filtre){
+     console.log(arrayFilter)
     for (i=0; i< arrayFilter.length; i++){
         for (j=0 ; j<arrayFilter[i].length ; j++){
+            console.log(arrayFilter[i].ingredients[j].ingredient)
             if (arrayFilter[i].ingredients[j].ingredient === filtre.textContent){
                 arrayFilter.splice(arrayFilter[i],1)
             }
@@ -76,9 +78,4 @@ recipeArray.map(
                     btnFiltre.remove()
                 })
             })
-
-
-
-
  }
-

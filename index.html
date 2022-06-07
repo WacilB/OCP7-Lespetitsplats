@@ -19,14 +19,19 @@
         <button type="submit"><img src="/assets/loupe.png" alt="logo loupe recherche"></button>
     </form>
 <div id="search_ingredient__container">
-    <ul class="ingredient_list"></ul>
+	<div class="filter__container"></div>
+	<div class="filterIngredient__container">
+		<span id="toggleIngredient">Ingrédients</span>
+		<input type="text" placeholder="Rechercher un ingrédient">
+		<ul class="ingredient_list"></ul>
+	</div>
 </div>
 </section>
 <main id="recipes__container"></main>
 <script src="scripts/Api/api.js"></script>
 <script src="scripts/factory/displayCard.js"></script>
 <script src="scripts/utils/searchBar.js"></script>
-<script src="scripts/factory/filters.js"></script>
+<script src="scripts/utils/filterv2.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
