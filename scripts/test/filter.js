@@ -158,6 +158,27 @@ function filterAdd(type, name){
 	}
 	let recipeDisplay = document.querySelectorAll(".recipe__card:not(.recette-cacher)")
 	recipeDisplay.forEach(recipe => filterChosenbyId.push(recipe.getAttribute("id")))
+	listFilterDisplay.forEach(filter=>{
+		filter.classList.remove("nom-filtre-afficher")
+		filter.style.display = "none"
+	})
+	filterChosenbyId.forEach(id =>{
+		listFilterDisplay.forEach(filter=>{
+			if (document.getElementById(id).classList.contains(filter.getAttribute("id"))){
+				document.getElementById(filter.getAttribute("id")).classList.add("nom-filtre-afficher")
+				filter.style.display = "block"
+			}
+		})
+	})
+	if (recipeDisplay.length === 0){
+		document.getElementById("aucun-resultat").classList.add("aucun-resultat-afficher")
+	}else{
+		document.getElementById("aucun-resultat").classList.remove("aucun-resultat-afficher")
+	}
+	document.getElementById(type+"-"+name).classList.remove("nom-filtre-afficher");
+	document.getElementById(type+"-"+name).classList.add("nom-filtre-cacher-choisis");
+	document.getElementById(type+"-"+name).style.display = "none";
+	
 }
 
 
