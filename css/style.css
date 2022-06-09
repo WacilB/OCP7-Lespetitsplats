@@ -191,3 +191,132 @@ margin: 1.5em 0 1.5em 0;
     border-radius: 5px;
     margin: 1em;
 }
+
+
+
+
+/*Filtre*/
+/** Liste des filtres **/
+#filters__list {
+    display: flex;
+    margin: 20px 0;
+}
+/* Type de filtre */
+.filter__type {
+    border-radius: 5px;
+    display: flex;
+}
+/* Boutons */
+.filter__btn {
+    border-color: transparent;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 20px;
+    height: 65px;
+    margin-right: 20px;
+    padding: 0 10px;
+    position: relative;
+    text-align: left;
+    width: 250px;
+}
+.filter__btn:hover {
+    cursor: pointer;
+}
+.btn-afficher {
+    display: block;
+}
+.btn-cacher {
+    display: none;
+}
+/* Chevron */
+.chevron-filtre {
+    color: #ffffff;
+    font-size: 18px;
+    margin-left: 5px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.chevron-filtre:hover {
+    cursor: pointer;
+}
+/* Cherche dans les filtres */
+.search-filter {
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    margin-right: 20px;
+    min-width: 250px;
+    padding: 0 10px;
+    width: 100%;
+}
+.search-filter > form {
+    position: relative;
+}
+.cherche-filtre-cacher {
+    display: none;
+}
+.cherche-filtre-afficher {
+    display: flex;
+}
+/* Champs des filtres */
+.champ-filtre {
+    border-color: transparent;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 15px;
+    height: 65px;
+    width: 100%;
+}
+.champ-filtre::placeholder {
+    color: #ffffff;
+}
+/* Liste des filtres */
+.filter__list {
+    columns: 3;
+    height: fit-content;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 15px 0;
+}
+.nom-filtre {
+    color: #ffffff;
+}
+.nom-filtre:hover {
+    cursor: pointer;
+}
+.nom-filtre:first-letter {
+    text-transform: capitalize;
+}
+.nom-filtre-afficher {
+    display: block;
+}
+.nom-filtre-cacher {
+    display: none;
+}
+.nom-filtre-cacher-choisis {
+    display: none !important;
+}
+/* Ingrédients */
+#btn-ingredients,
+#search-ingredients,
+#champ-ingredients,
+.filtre-ingredients {
+    background-color: #3282f7;
+}
+/* Appareils */
+#btn-appareils,
+#search-appareils,
+#champ-appliance,
+.filtre-appliance {
+    background-color: #68d9a4;
+}
+/* Ustensiles */
+#btn-ustensiles,
+#search-ustensiles,
+#champ-ustensils,
+.filtre-ustensils {
+    background-color: #ed6454;
+}
