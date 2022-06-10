@@ -181,6 +181,42 @@ function filterAdd(type, name){
 	
 }
 
+function deleteFilter(type, name){
+	document.getElementById("aucun-resultat").classList.remove("aucun-resultat-afficher")
+	document.getElementById(type+"-"+textNormalize(name)).classList.remove("filtre-cacher")
+	document.getElementById(type +"-"+name).classList.remove("nom-filtre-cacher-choisis")
+	document.getElementById("filtre-"+type+"-"+textNormalize(name)).remove()
+	filterChosen =filterChosen.filter(item =>item !== type+"-"+textNormalize(name))
+	recipeList.forEach(recipe =>{
+		if (filterChosen.length === 0 && filterChosenbyId.includes("VIDE") === true){
+			document.querySelectorAll(".nom-filtre").forEach(filter =>{
+				filter.classList.remove("nom-filtre-afficher")
+				filter.classList.remove("nom-filtre-cacher")
+				filter.style.display = "block"
+			})
+			recipe.classList.remove("recette-cacher")
+		}
+		else if (filterChosen.length === 0 && tableauRechercheID.includes("VIDE") === false){
+			recipe.classList.add("recette-afficher")
+			tableauRechercheID.forEach(id=>{
+				if (recipe.getAttribute("id") === id.toString()){
+					recipe.classList.remove("recette-cacher")
+					recipe.classList.forEach(classe =>{
+						if (recipe.classList.contains("recette-afficher")){
+							if (classe !== "recette"){
+								if (document.getElementById(classe) !== null){
+									document.getElementById(classe).classList.add("nom-filtre-afficher")
+									document.getElementById(classe).style.display = "block"
+								}
+							}
+						}
+					})
+				}
+			})
+		}
+		
+	})
+}
 
 let tableauRechercheID = [];
 tableauRechercheID.push("VIDE")
