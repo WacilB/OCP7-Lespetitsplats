@@ -88,9 +88,7 @@ function filterAdd(type, name){
 				ingredientFiltersChosen.forEach(classe=>{
 					if (recipe.classList.contains(classe)){
 						ingredientsToDisplay.push(document.getElementById(recipe.id))
-						console.log(ingredientsToDisplay)
 						filterDisplayRecipe()
-						filterMatch(type)
 					}
 					
 				})
@@ -103,7 +101,6 @@ function filterAdd(type, name){
 				applianceFiltersChosen.forEach(classe =>{
 					if (recipe.classList.contains(classe)){
 						applianceToDisplay.push(document.getElementById(recipe.id))
-						console.log(applianceToDisplay)
 						filterDisplayRecipe()
 					}
 				})
@@ -116,7 +113,6 @@ function filterAdd(type, name){
 				ustensilsFiltersChosen.forEach(classe =>{
 					if (recipe.classList.contains(classe)){
 						ustensilsToDisplay.push(document.getElementById(recipe.id))
-						console.log(ustensilsToDisplay)
 						filterDisplayRecipe()
 					}
 				})
@@ -251,18 +247,39 @@ function filterDisplayRecipe(){
 function deleteFilter(type, name){
 	switch (type){
 		case "ingredients":
-			console.log(name)
-			console.log(ingredientFiltersChosen.indexOf(type+"-"+name))
-			ingredientFiltersChosen.splice(ingredientFiltersChosen.indexOf(type+"-"+name))
+			ingredientFiltersChosen.splice(ingredientFiltersChosen.indexOf(type+"-"+name) , 1)
+			ingredientsToDisplay = []
 			recipeList.forEach(recipe=>{
 				ingredientFiltersChosen.forEach(classe=>{
 					if (recipe.classList.contains(classe)){
 						ingredientsToDisplay.push(document.getElementById(recipe.id))
-						console.log(ingredientsToDisplay)
-						filterDisplayRecipe()
 					}
-					
 				})
 			})
+			break
+		case "appliance":
+			applianceFiltersChosen.splice(applianceFiltersChosen.indexOf(type+"-"+name),1)
+			applianceToDisplay = []
+			recipeList.forEach(recipe =>{
+				applianceFiltersChosen.forEach(classe =>{
+					if (recipe.classList.contains(classe)){
+						applianceToDisplay.push(document.getElementById(recipe.id))
+					}
+				})
+			})
+		case "ustensils":
+			ustensilsFiltersChosen.splice(ustensilsFiltersChosen.indexOf(type+"-"+name), 1)
+			ustensilsToDisplay =[]
+			recipeList.forEach(recipe =>{
+				ustensilsFiltersChosen.forEach(classe=>{
+					if (recipe.classList.contains(classe)){
+						ustensilsToDisplay.push(document.getElementById(recipe.id))
+					}
+				})
+				}
+			)
+
 	}
+	document.querySelector(".filtre-"+type+"-"+name).remove()
+	filterDisplayRecipe()
 }
