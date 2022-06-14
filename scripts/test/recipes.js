@@ -83,7 +83,7 @@ const recipes = [
                 "unit" : "ml"
             },
             {
-                "ingredient": "Coulis de tomate",
+                "ingredient": "Coulis de tomates",
                 "quantity" : 25,
                 "unit" : "cl"
             },
@@ -96,7 +96,7 @@ const recipes = [
                 "quantity": 1
             },
             {
-                "ingredient": "Huile d'olive",
+                "ingredient": "Huile d'olives",
                 "quantity": 1,
                 "unit": "cuillères à soupe"
             }
@@ -192,7 +192,7 @@ const recipes = [
                 "quantity": 1
             },
             {
-                "ingredient": "Pomme",
+                "ingredient": "Pommes",
                 "quantity": 3
             },
             {
@@ -252,7 +252,7 @@ const recipes = [
         "time": 50,
         "description": "Etaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crême liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
         "appliance":"Four",
-        "ustensils":["moule à tartelettes (6)", "casserolle"]
+        "ustensils":["moule à tartelettes", "casserolle"]
     }, {
         "id": 8,
         "name": "Brownie",
@@ -315,7 +315,7 @@ const recipes = [
                 "ingredient": "Vinaigre Balsamic"
             },
             {
-                "ingredient": "Huile d'olive"
+                "ingredient": "Huile d'olives"
             }, 
             {
                 "ingredient": "Basilic"    
@@ -454,7 +454,7 @@ const recipes = [
                 "unit":"cuillère à soupe"
             },
             {
-                "ingredient": "huile d'olive",
+                "ingredient": "huile d'olives",
                 "quantity": 2,
                 "unit": "cuillère à soupe"
             }
@@ -534,7 +534,7 @@ const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Banane",
+                "ingredient": "Bananes",
                 "quantity": 4
             }
         ],
@@ -642,7 +642,7 @@ const recipes = [
         "servings": 4,
         "ingredients": [
             {
-                "ingredient": "Kiwi",
+                "ingredient": "Kiwis",
                 "quantity": 4
             },
             {
@@ -660,7 +660,7 @@ const recipes = [
                 "unit":"grammes"
             },
             {
-                "ingredient": "Banane",
+                "ingredient": "Bananes",
                 "quantity": 1
             }
         ],
@@ -695,7 +695,7 @@ const recipes = [
                 "unit":"grammes"
             },
             {
-                "ingredient": "huile d'olive",
+                "ingredient": "huile d'olives",
                 "quantity": 1,
                 "unit": "cuillères à soupe"
             }
@@ -720,12 +720,12 @@ const recipes = [
                 "quantity": 2
             },
             {
-                "ingredient": "Coulis de tomate",
+                "ingredient": "Coulis de tomates",
                 "quantity": 300,
                 "unit":"grammes"
             },
             {
-                "ingredient": "Viande hachée 1% de matière grasse",
+                "ingredient": "Viande hachée",
                 "quantity": 400,
                 "unit":"grammes"
             },
@@ -1014,7 +1014,7 @@ const recipes = [
                 "quantity": 2
             },
             {
-                "ingredient": "Huile d'olive"
+                "ingredient": "Huile d'olives"
             },
             {
                 "ingredient": "Paprika"
@@ -1176,7 +1176,7 @@ const recipes = [
                 "unit": "cl"
             },
             {
-                "ingredient": "Huile d'olive"
+                "ingredient": "Huile d'olives"
             },
             {
                 "ingredient": "Orange",
@@ -1342,7 +1342,7 @@ const recipes = [
         "servings": 40,
         "ingredients": [
             {
-                "ingredient": "Pomme",
+                "ingredient": "Pommes",
                 "quantity": 2
             },
             {

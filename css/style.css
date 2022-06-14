@@ -172,7 +172,9 @@ Main Section
     font-size: 1.5em;
     display: none;
 }
-
+.aucun-resultat-afficher{
+	display: block!important;
+}
 
 
 /*Filtre*/
@@ -272,6 +274,9 @@ Main Section
 }
 .nom-filtre-afficher {
     display: block;
+}
+.nom-filtre-include{
+    color: red;
 }
 .nom-filtre-cacher {
     display: none;

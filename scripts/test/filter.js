@@ -61,162 +61,208 @@ function filterClose(type) {
 	chercheType.classList.add("cherche-filtre-cacher");
 }
 
+
+
 //Ajoute les filtres choisis dans un tableau
 
 let filterChosen = []
 let filterChosenbyId = []
+//************************
+let ingredientsToDisplay = []
+let ustensilsToDisplay = []
+let applianceToDisplay = []
+let ingredientFiltersChosen =[]
+let ustensilsFiltersChosen =[]
+let applianceFiltersChosen =[]
 
 function filterAdd(type, name){
-	filterChosen.push(type +"-"+ name)
 	let nameDisplay = name.replace("-", " ")
 	document.getElementById("filter__container").insertAdjacentHTML("beforeend", `<span class="filtre filtre-${type}-${textNormalize(name)}">${nameDisplay}<i class="far fa-times-circle" onclick="deleteFilter('${type}', '${name}')"></i></span>`)
-	let listFilterDisplay = document.querySelectorAll(".nom-filtre")
+	
+	
 	switch (type){
 		case "ingredients":
+			ingredientFiltersChosen.push(type+"-"+name)
 			document.getElementById("champ-ingredients").value = ""
-			recipeList.forEach( function (recipe){
-				if(tableauRechercheID.includes("VIDE") === true) {
-					if (recipe.classList.contains("ingredients-" + textNormalize(name))) {
-						document.getElementById(recipe.id).classList.add("recette-afficher")
-					} else {
-						document.getElementById(recipe.id).classList.remove("recette-afficher");
-						document.getElementById(recipe.id).classList.add("recette-cacher");
+			recipeList.forEach(recipe=>{
+				ingredientFiltersChosen.forEach(classe=>{
+					if (recipe.classList.contains(classe)){
+						ingredientsToDisplay.push(document.getElementById(recipe.id))
+						console.log(ingredientsToDisplay)
+						filterDisplayRecipe()
+						filterMatch(type)
 					}
-				}else {
-					tableauRechercheID.forEach(rechercheID => {
-						if(recipe.id === rechercheID.toString()) {
-							tableauFiltresChoisis.forEach(item => {
-								if (document.getElementById(recipe.id).classList.contains(item) && recipe.classList.contains("recette-afficher")) {
-									document.getElementById(recipe.id).classList.remove("recette-cacher");
-									document.getElementById(recipe.id).classList.add("recette-afficher");
-								} else {
-									document.getElementById(recipe.id).classList.remove("recette-afficher");
-									document.getElementById(recipe.id).classList.add("recette-cacher");
-								}
-							});
-						}
-					});
-				}
+					
+				})
 			})
-			break;
+			break
 		case "appliance":
+			applianceFiltersChosen.push(type+"-"+name)
 			document.getElementById("champ-appliance").value = ""
-			recipeList.forEach( function (recipe){
-				if(tableauRechercheID.includes("VIDE") === true) {
-					if (recipe.classList.contains("appliance-" + textNormalize(name))) {
-						document.getElementById(recipe.id).classList.add("recette-afficher")
-					} else {
-						document.getElementById(recipe.id).classList.remove("recette-afficher");
-						document.getElementById(recipe.id).classList.add("recette-cacher");
+			recipeList.forEach(recipe=>{
+				applianceFiltersChosen.forEach(classe =>{
+					if (recipe.classList.contains(classe)){
+						applianceToDisplay.push(document.getElementById(recipe.id))
+						console.log(applianceToDisplay)
+						filterDisplayRecipe()
 					}
-				}else {
-					tableauRechercheID.forEach(rechercheID => {
-						if(recipe.id === rechercheID.toString()) {
-							tableauFiltresChoisis.forEach(item => {
-								if (document.getElementById(recipe.id).classList.contains(item) && recipe.classList.contains("recette-afficher")) {
-									document.getElementById(recipe.id).classList.remove("recette-cacher");
-									document.getElementById(recipe.id).classList.add("recette-afficher");
-								} else {
-									document.getElementById(recipe.id).classList.remove("recette-afficher");
-									document.getElementById(recipe.id).classList.add("recette-cacher");
-								}
-							});
-						}
-					});
-				}
+				})
 			})
-			break;
+			break
 		case "ustensils":
-			document.getElementById("champ-ustensils").value = ""
-			recipeList.forEach( function (recipe){
-				if(tableauRechercheID.includes("VIDE") === true) {
-					if (recipe.classList.contains("ustensils-" + textNormalize(name))) {
-						document.getElementById(recipe.id).classList.add("recette-afficher")
-					} else {
-						document.getElementById(recipe.id).classList.remove("recette-afficher");
-						document.getElementById(recipe.id).classList.add("recette-cacher");
+			ustensilsFiltersChosen.push(type+"-"+name)
+			document.getElementById("champ-ustensils").value =""
+			recipeList.forEach(recipe=>{
+				ustensilsFiltersChosen.forEach(classe =>{
+					if (recipe.classList.contains(classe)){
+						ustensilsToDisplay.push(document.getElementById(recipe.id))
+						console.log(ustensilsToDisplay)
+						filterDisplayRecipe()
 					}
-				}else {
-					tableauRechercheID.forEach(rechercheID => {
-						if(recipe.id === rechercheID.toString()) {
-							tableauFiltresChoisis.forEach(item => {
-								if (document.getElementById(recipe.id).classList.contains(item) && recipe.classList.contains("recette-afficher")) {
-									document.getElementById(recipe.id).classList.remove("recette-cacher");
-									document.getElementById(recipe.id).classList.add("recette-afficher");
-								} else {
-									document.getElementById(recipe.id).classList.remove("recette-afficher");
-									document.getElementById(recipe.id).classList.add("recette-cacher");
-								}
-							});
-						}
-					});
-				}
+				})
 			})
-			break;
+			break
 		default:
 			break
-	}
-	let recipeDisplay = document.querySelectorAll(".recipe__card:not(.recette-cacher)")
-	recipeDisplay.forEach(recipe => filterChosenbyId.push(recipe.getAttribute("id")))
-	listFilterDisplay.forEach(filter=>{
-		filter.classList.remove("nom-filtre-afficher")
-		filter.style.display = "none"
-	})
-	filterChosenbyId.forEach(id =>{
-		listFilterDisplay.forEach(filter=>{
-			if (document.getElementById(id).classList.contains(filter.getAttribute("id"))){
-				document.getElementById(filter.getAttribute("id")).classList.add("nom-filtre-afficher")
-				filter.style.display = "block"
-			}
-		})
-	})
-	if (recipeDisplay.length === 0){
-		document.getElementById("aucun-resultat").classList.add("aucun-resultat-afficher")
-	}else{
-		document.getElementById("aucun-resultat").classList.remove("aucun-resultat-afficher")
 	}
 	document.getElementById(type+"-"+name).classList.remove("nom-filtre-afficher");
 	document.getElementById(type+"-"+name).classList.add("nom-filtre-cacher-choisis");
 	document.getElementById(type+"-"+name).style.display = "none";
+}
+
+function filterMatch(type){
+	switch (type) {
+		case "ingredients" :
+			ingredientsToDisplay.forEach(recipe =>{
+				console.log(recipe)
+				listeIngredients.forEach(filter=>{
+					if (recipe.classList.contains(filter.id)){
+						filter.style.color="green"
+					}else{
+						filter.style.color ="red"
+					}
+				})
+			})
+	}
+}
+
+function filterDisplayRecipe(){
+	//Initialisation des recettes
+	recipeList.forEach(recipe =>{
+		if (ingredientsToDisplay.length === 0 && applianceToDisplay.length === 0 && ustensilsToDisplay.length === 0){
+			recipe.classList.remove("recette-cacher")
+			recipe.classList.add("recette-afficher")
+			recipe.style.display = "block"
+		}else{
+			recipe.classList.add("recette-cacher")
+			recipe.classList.remove("recette-afficher")
+			recipe.style.display = "none"
+		}
+	})
+	
+	//Si il y a au moins un filtre d'ingrédient séléctionné
+	if (ingredientsToDisplay.length >= 1){
+		ingredientsToDisplay.forEach(recipe =>{
+			recipe.classList.remove("recette-cacher")
+			recipe.classList.add("recette-afficher")
+			recipe.style.display = "block"
+		})
+		//Si il y a au moins  un filtre ingrédient et un filtre appareil
+		if (applianceToDisplay.length >= 1){
+			document.querySelectorAll(".recipe__card:not(.recette-cacher)").forEach(recipe=>{
+				applianceFiltersChosen.forEach(classe =>{
+					if (recipe.classList.contains(classe) === false){
+						recipe.classList.add("recette-cacher")
+						recipe.classList.remove("recette-afficher")
+						recipe.style.display = "none"
+					}
+				})
+			})
+			//Si il y a au moins un filtre ingrédient appareil et ustensil
+			if (ustensilsToDisplay.length >=1){
+				document.querySelectorAll(".recipe__card:not(.recette-cacher)").forEach(recipe=>{
+					ustensilsFiltersChosen.forEach(classe =>{
+						if (recipe.classList.contains(classe) === false){
+							recipe.classList.add("recette-cacher")
+							recipe.classList.remove("recette-afficher")
+							recipe.style.display = "none"
+						}
+					})
+				})
+			}
+		}else{
+			//Si il y a un filtre ingredient et ustensil
+			if (ustensilsToDisplay.length >=1){
+				document.querySelectorAll(".recipe__card:not(.recette-cacher)").forEach(recipe=>{
+					ustensilsFiltersChosen.forEach(classe =>{
+						if (recipe.classList.contains(classe) === false){
+							recipe.classList.add("recette-cacher")
+							recipe.classList.remove("recette-afficher")
+							recipe.style.display = "none"
+						}
+					})
+				})
+			}
+		}
+		//Si il n'y a pas de filtre ingrédient séléctionné
+	}else{
+		//Si seulement un filtre appareil est séléctionné
+		if (applianceToDisplay.length >= 1){
+			applianceToDisplay.forEach(recipe =>{
+				recipe.classList.remove("recette-cacher")
+				recipe.classList.add("recette-afficher")
+				recipe.style.display = "block"
+			})
+			//Si il y au moins un filtre appareil et ustensil
+			if (ustensilsToDisplay.length >= 1){
+				document.querySelectorAll(".recipe__card:not(.recette-cacher)").forEach(recipe=>{
+					ustensilsFiltersChosen.forEach(classe =>{
+						if (recipe.classList.contains(classe) === false){
+							recipe.classList.add("recette-cacher")
+							recipe.classList.remove("recette-afficher")
+							recipe.style.display = "none"
+						}
+					})
+				})
+			}
+		}else{
+			//Si il y a seulement au moins un filtre ustensil
+			ustensilsToDisplay.forEach(recipe =>{
+				recipe.classList.remove("recette-cacher")
+				recipe.classList.add("recette-afficher")
+				recipe.style.display = "block"
+			})
+		}
+	}
+	
+	
+	
+	// Si il n'y a aucune recette à afficher
+	let recipeDisplay = document.querySelectorAll(".recipe__card:not(.recette-cacher)")
+	if (recipeDisplay.length ===0){
+		document.getElementById("aucun-resultat").classList.add("aucun-resultat-afficher")
+	}else{
+		document.getElementById("aucun-resultat").classList.remove("aucun-resultat-afficher")
+	}
+	
 	
 }
 
 function deleteFilter(type, name){
-	document.getElementById("aucun-resultat").classList.remove("aucun-resultat-afficher")
-	document.getElementById(type+"-"+textNormalize(name)).classList.remove("filtre-cacher")
-	document.getElementById(type +"-"+name).classList.remove("nom-filtre-cacher-choisis")
-	document.getElementById("filtre-"+type+"-"+textNormalize(name)).remove()
-	filterChosen =filterChosen.filter(item =>item !== type+"-"+textNormalize(name))
-	recipeList.forEach(recipe =>{
-		if (filterChosen.length === 0 && filterChosenbyId.includes("VIDE") === true){
-			document.querySelectorAll(".nom-filtre").forEach(filter =>{
-				filter.classList.remove("nom-filtre-afficher")
-				filter.classList.remove("nom-filtre-cacher")
-				filter.style.display = "block"
+	switch (type){
+		case "ingredients":
+			console.log(name)
+			console.log(ingredientFiltersChosen.indexOf(type+"-"+name))
+			ingredientFiltersChosen.splice(ingredientFiltersChosen.indexOf(type+"-"+name))
+			recipeList.forEach(recipe=>{
+				ingredientFiltersChosen.forEach(classe=>{
+					if (recipe.classList.contains(classe)){
+						ingredientsToDisplay.push(document.getElementById(recipe.id))
+						console.log(ingredientsToDisplay)
+						filterDisplayRecipe()
+					}
+					
+				})
 			})
-			recipe.classList.remove("recette-cacher")
-		}
-		else if (filterChosen.length === 0 && tableauRechercheID.includes("VIDE") === false){
-			recipe.classList.add("recette-afficher")
-			tableauRechercheID.forEach(id=>{
-				if (recipe.getAttribute("id") === id.toString()){
-					recipe.classList.remove("recette-cacher")
-					recipe.classList.forEach(classe =>{
-						if (recipe.classList.contains("recette-afficher")){
-							if (classe !== "recette"){
-								if (document.getElementById(classe) !== null){
-									document.getElementById(classe).classList.add("nom-filtre-afficher")
-									document.getElementById(classe).style.display = "block"
-								}
-							}
-						}
-					})
-				}
-			})
-		}
-		
-	})
+	}
 }
-
-let tableauRechercheID = [];
-tableauRechercheID.push("VIDE")
