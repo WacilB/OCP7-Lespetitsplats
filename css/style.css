@@ -151,13 +151,16 @@ Main Section
     margin: 5px 0;
 }
 .recipe__infos__description p {
-    width: 45%;
-    line-height: 1em;
+
     display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 10;
+    margin: 20px 0 0 0;
     overflow: hidden;
+    text-align: justify;
     text-overflow: ellipsis;
+    width: 50%;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+
 }
 .recette-afficher {
     display: block;
@@ -187,6 +190,32 @@ Main Section
 .filter__type {
     border-radius: 5px;
     display: flex;
+}
+
+/** Filtres choisis **/
+/* Filtre */
+.filtre {
+    border-radius: 5px;
+    color: #ffffff;
+    display: inline-block;
+    line-height: 30px;
+    min-height: 30px;
+    min-width: 100px;
+    margin: 0 10px 10px 0;
+    padding: 10px 20px;
+    position: relative;
+}
+.filtre:first-letter {
+    text-transform: capitalize;
+}
+.fa-times-circle {
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 10px;
+}
+.fa-times-circle:hover {
+    cursor: pointer;
 }
 /* Boutons */
 .filter__btn {
@@ -275,14 +304,17 @@ Main Section
 .nom-filtre-afficher {
     display: block;
 }
-.nom-filtre-include{
-    color: red;
-}
+
 .nom-filtre-cacher {
     display: none;
 }
 .nom-filtre-cacher-choisis {
     display: none !important;
+}
+.nom-filtre-compatible{
+    color: white;
+}.nom-filtre-incompatible{
+    color: grey;
 }
 /* Ingrédients */
 #btn-ingredients,
