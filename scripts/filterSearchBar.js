@@ -5,7 +5,7 @@ const arrayUstensiles = [];
 const listeIngredients = document.querySelectorAll("[data-type='ingredients']");
 const listeAppareils = document.querySelectorAll("[data-type='appliance']");
 const listeUstensils = document.querySelectorAll("[data-type='ustensils']");
-
+console.log(listeIngredients)
 listeIngredients.forEach((ingredient) => {
   arrayIngredients.push(ingredient.getAttribute('data-nom'));
 });
@@ -116,10 +116,12 @@ function filtersMatch() {
       filtre.style.display = 'block';
     });
   } else {
+    
     // Si aucun filtre n'est sélectionné, remettre le style de chaque filtre par défaut
     if (ingredientFiltersChosen.length === 0
 	    && applianceFiltersChosen.length === 0
 	    && ustensilsFiltersChosen.length === 0) {
+      console.log("yes")
       listeIngredients.forEach((filtreIngredient) => {
         filtreIngredient.classList.remove('nom-filtre-incompatible');
         filtreIngredient.classList.remove('nom-filtre-compatible');

@@ -80,4 +80,5 @@ recipes.forEach((recipe) => {
     recipeUstensils,
   );
 });
+
 const recipeList = document.querySelectorAll('.recipe__card');
