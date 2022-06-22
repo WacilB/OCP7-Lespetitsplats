@@ -21,6 +21,9 @@
         "no-undef": "off",
         "no-param-reassign": "off",
         "no-lonely-if": "off",
-        "eol-last": "off"
+        "eol-last": "off",
+        "no-plusplus": "off",
+        "no-shadow": "off",
+        "no-case-declarations": "off"
     }
 }
