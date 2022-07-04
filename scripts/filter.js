@@ -162,19 +162,27 @@ function filterDisplayRecipe() {
     }
     // S’il y a une valeur supérieure à trois dans la barre de recherche
   } else {
-    recipeList.forEach((recipe) => {
+    let searchFalse = []
+    let recipeSearch = [...recipeList].filter(recipe=>{
       if (recipe.querySelector('h3').textContent.toLowerCase().includes(search)
           || recipe.querySelector('ul').textContent.toLowerCase().includes(search)
-          || recipe.querySelector('p').textContent.toLowerCase().includes(search)) {
-        recipe.classList.remove('recette-cacher');
-        recipe.classList.add('recette-afficher');
-        recipe.style.display = 'block';
-      } else {
-        recipe.classList.remove('recette-afficher');
-        recipe.classList.add('recette-cacher');
-        recipe.style.display = 'none';
+          || recipe.querySelector('p').textContent.toLowerCase().includes(search)){
+        return recipe
+      }else {
+        searchFalse.push(recipe)
       }
-    });
+    })
+    recipeSearch.forEach(element=>{
+      element.classList.remove('recette-cacher');
+      element.classList.add('recette-afficher');
+      element.style.display = 'block';
+    })
+  
+    searchFalse.forEach(element=>{
+      element.classList.add('recette-cacher');
+      element.classList.remove('recette-afficher');
+      element.style.display = 'none';
+    })
     //	S’il y a au moins un filtre d'ingrédient sélectionné
     if (ingredientsToDisplay.length >= 1) {
       document.querySelectorAll('.recipe__card:not(.recette-cacher)').forEach((recipe) => {
@@ -272,6 +280,9 @@ function filterDisplayRecipe() {
   }
   filtersMatch();
 }
+
+
+
 // Ajoute les filtres choisis dans un tableau
 
 function filterAdd(type, name) {
