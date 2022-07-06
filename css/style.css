@@ -130,7 +130,7 @@ Main Section
 }
 .recipe__infos__header span::before{
     position: relative;
-    content: url("/assets/clock.svg");
+    content: url("assets/clock.svg");
     margin:0 10px;
     top: 2px;
 
